@@ -1,0 +1,74 @@
+@use "mixin" as *;
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+html {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+	font-size: 62.5%;
+	font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans","游ゴシック", "Yu Gothic",Meiryo,sans-serif;
+	font-feature-settings : "palt";
+  text-decoration-skip-ink: all;
+}
+body {
+	font-size: $base*1.5;
+  accent-color: $accent;
+	font-weight: 500;
+	@include mq(lg) {
+		font-size: $base*1.6;
+	}
+}
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+	margin: 0;
+}
+body {
+	min-height: 100vh;
+	line-height: 1.6;
+}
+img, picture, svg, video {
+	max-width: 100%;
+	display: block;
+	height: auto;
+}
+input, button, textarea, select {
+	font: inherit;
+}
+textarea:not([rows]) {
+	min-height: 10em;
+}
+:target {
+	scroll-margin-block: 5ex;
+}
+a,button {
+	cursor: pointer;
+	transition: all .4s ease;
+}
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none
+}
+
+input[type="submit"],
+input[type="button"] {
+  border-radius: 0;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+input[type="submit"]::-webkit-search-decoration,
+input[type="button"]::-webkit-search-decoration {
+  display: none;
+}
+input[type="submit"]::focus,
+input[type="button"]::focus {
+  outline-offset: -2px;
+}

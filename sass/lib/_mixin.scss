@@ -1,0 +1,195 @@
+$font: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+$mincho: "Times New Roman", "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "Hiragino Mincho ProN", "YuMincho", "Yu Mincho", "MS PMincho", serif;
+$base: 1rem;
+$color:  #707070;
+$key:    #6D10B9;
+$accent: #ED1C24;
+
+$breakpoints: (
+  "sm": "screen and (max-width: 749px)",
+  "lg": "screen and (min-width: 750px)",
+) !default;
+
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+  }
+}
+
+@mixin effect($time:.4s) {
+  transition: all $time ease;
+}
+
+@mixin btn {
+  border: 0;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .4s ease;
+  position: relative;
+  a, button {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    text-align: center;
+    & > br {
+      display: none;
+    }
+    p {
+      &:empty {
+        display: none;
+      }
+    }
+    .btn_mctext {
+      display: inline-block;
+      margin-bottom: -1rem;
+      padding: .5rem 2rem;
+      background: #fff;
+      border: 3px solid #faa618;
+      border-radius: 50px;
+      color: #faa618;
+      font-weight: bold;
+      font-size: 1.4rem;
+      position: relative;
+      z-index: 2;
+      @include mq(lg) {
+        font-size: 1.8rem;
+      }
+      &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-width: 10px 6px;
+        border-style: solid;
+        border-color: #fff transparent transparent transparent;
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    strong {
+      display: block;
+      border-radius: 8px;
+      padding: $base*2 $base*2;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.8rem;
+      @include mq(lg) {
+        font-size: 2.4rem;
+      }
+    }
+  }
+  &-base,
+  &-yellow {
+    a, button {
+      .btn_mctext {
+        border: 3px solid #db9010;
+        color: #db9010;
+      }
+      strong {
+        border: 1px solid #db9010;
+        background: #FFC837;
+        border-bottom: 3px solid #db9010;
+        box-shadow:inset 5px 5px 5px rgba(255,255,255,.3),
+        inset -5px -5px 5px rgba(0,0,0,.1);
+      }
+    }
+  }
+  &-red {
+    a, button {
+      .btn_mctext {
+        border: 3px solid #a32046;
+        color: #a32046;
+      }
+      strong {
+        background: #ed4172;
+        border-bottom: 3px solid #a32046;
+        box-shadow:inset 5px 5px 5px rgba(255,255,255,.3),
+        inset -5px -5px 5px rgba(0,0,0,.1);
+      }
+    }
+  }
+  &-green {
+    a, button {
+      .btn_mctext {
+        border: 3px solid #059c21;
+        color: rgb(0,170,32);
+      }
+      strong {
+        background: rgb(0,170,32);
+        border-bottom: 3px solid #059c21;
+        box-shadow:inset 5px 5px 5px rgba(255,255,255,.3),
+        inset -5px -5px 5px rgba(0,0,0,.1);
+      }
+    }
+  }
+  &-sub {
+    a, button {
+      .btn_mctext {
+        border: 3px solid #9b4cc2;
+        color: #9b4cc2;
+      }
+      strong {
+        background: rgb(155,76,194);
+        border-bottom: 3px solid #893DAF;
+        box-shadow:inset 5px 5px 5px rgba(255,255,255,.3),
+        inset -5px -5px 5px rgba(0,0,0,.1);
+      }
+    }
+  }
+  &:hover {
+    opacity: .5;
+  }
+  svg {
+    width: $base*3;
+  }
+}
+
+.for-pc {
+  display: inline;
+  @include mq(sm) {
+    display: none;
+  }
+}
+.for-sp {
+  display: inline;
+  @include mq(lg) {
+    display: none;
+  }
+}
+
+@keyframes bound{
+  0% {
+    -webkit-transform: translate(0, 0);
+  }
+  30% {
+      -webkit-transform: translate(0, 0);
+  }
+  40% {
+      -webkit-transform: translate(0, -5px);
+  }
+  50% {
+      -webkit-transform: translate(0, 0);
+  }
+}
+@keyframes shiny {
+  0% { transform: scale(0) rotate(45deg); opacity: 0; }
+  80% { transform: scale(0) rotate(45deg); opacity: 0.5; }
+  81% { transform: scale(4) rotate(45deg); opacity: 1; }
+  100% { transform: scale(50) rotate(45deg); opacity: 0; }
+}
+
+
+@for $i from 0 through 10 {
+  .w#{$i * 10} {
+    width:#{$i * 10%};
+  }
+}
+.m-auto {
+  margin: auto;
+}

@@ -1,0 +1,287 @@
+@use "mixin" as *;
+
+//============================================
+//  Header
+//============================================
+.head {
+  width: 100%;
+  padding: $base;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  &_inner {
+    max-width: 750px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    width: 150px;
+  }
+  &-logo {
+    font-size: 24px;
+  }
+  &-pr {
+    border: 1px solid #bdb5a5;
+    border-radius: 3px;
+    padding: 5px;
+    line-height: 1;
+    font-size: 14px;
+    color: #bdb5a5;
+  }
+  &.flex-end .head_inner {
+    justify-content: flex-end;
+  }
+}
+
+.is-scroll {
+  padding-top: 50px;
+  .head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+}
+
+
+//============================================
+//  Company
+//============================================
+.company {
+  h2 {
+    padding: .5em;
+    background: #ebf3f9;
+    border-bottom: 2px solid #78B3CE;
+    font-size: 1.2em;
+  }
+  p {
+    margin-bottom: 1em;
+    font-size: 0.9em;
+  }
+  table {
+    border-collapse: collapse;
+    th, td {
+      font-size: 80%;
+      border-bottom: 1px solid #cbe4ef !important;
+    }
+    th {
+      background: #ebf3f9 !important;
+      color: inherit !important;
+    }
+  }
+}
+
+
+//============================================
+//  Footer
+//============================================
+.footer {
+  padding: $base*3 $base;
+  background: #f6f6f6;
+  text-align: center;
+  * {
+    font-size: 12px;
+    @include mq(lg) {
+      font-size: 14px;
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-top: 1em;
+    padding: 0;
+    gap: 30px;
+    list-style-type: none;
+    li {
+      position: relative;
+      padding-left: 0 !important;
+      a {
+        text-decoration: none;
+      }
+      &::before {
+        display: none !important;
+      }
+      &::after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 1em;
+        background: #414141;
+        position: absolute;
+        top: 50%;
+        right: -15px;
+        margin-top: -0.5em;
+      }
+      &:last-of-type {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+//============================================
+//  Search Form
+//============================================
+.search {
+  background: #fff;
+  border: 4px solid #ECB24E;
+  border-radius: 10px;
+  margin: 5rem 5%;
+  @include mq(lg) {
+    margin: 5rem auto;
+  }
+  &_title {
+    padding: 2rem 1rem;
+    background: #ECB24E;
+    color: #fff;
+    font-weight: bold;
+    font-size: $base*1.8;
+    @include mq(lg) {
+      font-size: $base*2.2;
+    }
+  }
+  &_list {
+    dt {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background: #F2EED4;
+      border-bottom: 1px solid #e9e3c9;
+      color: #A89446;
+      font-weight: bold;
+      position: relative;
+      &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-width: 10px 6px;
+        border-style: solid;
+        border-color: #A89446 transparent transparent transparent;
+        position: absolute;
+        top: 50%;
+        right: 2%;
+        transform: translateY(-20%);
+        @include effect;
+      }
+      img {
+        width: 30px;
+        margin-right: 1em;
+      }
+    }
+    dd {
+      display: none;
+      padding: $base*1;
+      @include mq(lg) {
+        padding: $base*2;
+      }
+      label {
+        display: block;
+        width: 47.5%;
+        margin-bottom: 1rem;
+        padding: $base $base*0.5;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        transition: all .4s ease;
+        @include mq(lg) {
+          padding: $base;
+        }
+        cursor: pointer;
+        input {
+          display: none;
+        }
+        span {
+          display: flex;
+          align-items: center;
+          transition: all .4s ease;
+          position: relative;
+          font-size: 1.4rem;
+          @include mq(lg) {
+            font-size: 1.6rem;
+          }
+          &::before,
+          &::after {
+            content: '';
+            display: block;
+            transition: all .4s ease;
+          }
+          &::before {
+            width: 1.6rem;
+            height: 1.6rem;
+            margin-right: 0.5em;
+            background: #e1e1e1;
+            border-radius: 3px;
+            flex-shrink: 0;
+            @include mq(lg) {
+              width: 2rem;
+              height: 2rem;
+            }
+          }
+          &::after {
+            width: .6rem;
+            height: 1.2rem;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            position: absolute;
+            top: 50%;
+            left: .5rem;
+            transform: rotate(45deg);
+            margin-top: -.7rem;
+            @include mq(lg) {
+              width: .8rem;
+              height: 1.4rem;
+              border-right: 3px solid #fff;
+              border-bottom: 3px solid #fff;
+              left: .6rem;
+              margin-top: -.8rem;
+            }
+          }
+        }
+        input:checked + span {
+          color: #EF85B7;
+          &::before {
+            background: #EF85B7;
+          }
+        }
+        &:has(> input:checked) {
+          border: 2px solid #EF85B7;
+          background: #fffce2;
+        }
+      }
+    }
+    &.is-show {
+      dt {
+        &::after {
+          transform: rotate(180deg) translateY(60%);
+        }
+      }
+    }
+  }
+  &_input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+  }
+  &_btn {
+    display: flex;
+    justify-content: center;
+    padding: $base*2;
+    button {
+      display: block;
+      padding: $base*2 $base*4;
+      background: #F52C6A;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 3px 0 rgba(215,30,85,1);
+      text-shadow: 0 2px 0 rgba(0,0,0,.15);
+      &:hover {
+        opacity: .5;
+      }
+    }
+  }
+}

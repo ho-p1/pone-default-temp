@@ -1,0 +1,310 @@
+@use "mixin" as *;
+
+.pages {
+  max-width: 750px;
+  min-height: 80vh;
+  padding: 0 15px;
+  margin: auto;
+  @include mq(lg) {
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  p {
+    margin-bottom: 1em;
+  }
+
+  h1 {
+    margin-top: 1em;
+  }
+
+}
+
+.archive {
+  &_list {
+    li {
+      a {
+        display: block;
+        padding: .5em 1em;
+        border-bottom: 1px dashed #eee;
+        border-left: 3px solid #015aff;
+        font-weight: bold;
+        text-decoration: none;
+        position: relative;
+        &::after {
+          content: '';
+          display: block;
+          width: 0.5em;
+          height: 0.5em;
+          border-top: 2px solid #015aff;
+          border-right: 2px solid #015aff;
+          position: absolute;
+          top: 50%;
+          right: .1em;
+          margin-top: -2px;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}
+
+//============================================
+//  Search Result Page
+//============================================
+.result {
+  background: #f6f6f6;
+  &_search {
+    padding: 5%;
+  }
+  &_yours {
+    padding: 1rem 2rem;
+    background: #fff;
+    border: 1px solid #eee;
+    h2 {
+      margin-bottom: 1rem;
+      padding: .5rem 1rem;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+      @include mq(lg) {
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+    }
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 1px dashed #eee;
+      dt {
+        width: 100%;
+        padding: .5rem 0 0;
+        font-weight: bold;
+        font-size: 12px;
+        color: #91b5b2;
+        @include mq(lg) {
+          width: 250px;
+          padding: 1rem;
+          margin-right: 50px;
+        }
+      }
+      dd {
+        width: 100%;
+        padding: 0 0 .5rem;
+        display: flex;
+        flex-wrap: wrap;
+        @include mq(lg) {
+          padding: 0 0 1rem;
+        }
+        p {
+          font-size: 1.4rem;
+          @include mq(lg) {
+            font-size: 1.6rem;
+          }
+          &::after {
+            margin-right: .5em;
+            content: ',';
+          }
+          &:last-of-type {
+            &::after {
+              margin-right: 0;
+              content: '';
+            }
+          }
+        }
+        @include mq(lg) {
+          width: calc(100% - 300px);
+          padding: 1rem;
+        }
+      }
+    }
+    &-num {
+      margin-top: 1rem;
+      padding: .5rem 1rem;
+      background: #f8f8f8;
+      text-align: center;
+      strong {
+        color: #e2503a;
+      }
+    }
+  }
+  &-not {
+    text-align: center;
+    background: #fff;
+    padding: $base*2;
+    border-radius: 5px;
+  }
+
+  &_recommend {
+    &-content {
+      padding: 5%;
+      background: #fff;
+      border: 12px solid #edf8ff;
+      p {
+        margin-bottom: 1em;
+      }
+    }
+    &-thumb {
+      margin-bottom: 15px;
+      img {
+        display: block;
+        margin: auto;
+      }
+    }
+  }
+}
+
+//============================================
+//  FAQ
+//============================================
+.faq {
+  width: 95%;
+  margin: 5rem auto;
+  @include mq(lg) {
+    width: 100%;
+  }
+  .sec_title {
+    background-color: #071d5d;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: $base*2 $base;
+    position: relative;
+    margin-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      border-color: #071d5d transparent transparent transparent;
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  dl {
+    background: #fff;
+    border-bottom: 1px solid #b4aca1;
+    @include effect;
+    dt {
+      font-weight: bold;
+      border-bottom: 1px dashed #eee;
+      font-size: 2rem;
+      cursor: pointer;
+      position: relative;
+      @include effect;
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        @include effect;
+      }
+      &::before {
+        width: 16px;
+        height: 2px;
+        background: #071d5d;
+        right: 20px;
+        top: 50%;
+        margin-top: -1px;
+      }
+      &::after {
+        width: 2px;
+        height: 16px;
+        background: #071d5d;
+        position: absolute;
+        top: 50%;
+        margin-top: -8px;
+        right: 27px;
+      }
+      span {
+        display: block;
+        padding: 20px;
+        margin-right: 50px;
+        &::before {
+          content: 'Q.';
+          margin-right: 1rem;
+          font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+          font-weight: bold;
+        }
+      }
+    }
+    dd {
+      display: none;
+      padding: 20px 20px 20px 50px;
+      font-size: 1.8rem;
+      position: relative;
+      &::before {
+        content: 'A.';
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+        font-weight: bold;
+        font-size: 2.4rem;
+        line-height: 1;
+      }
+    }
+    &.is-open {
+      background: #f4f7fd;
+      dt {
+        color: #70a1c5;
+        border-bottom: 1px dashed #fff;
+        &::before,
+        &::after {
+          transform: rotate(360deg);
+        }
+        &::after {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+//============================================
+//  Column
+//============================================
+.column {
+  h1 {
+    padding-bottom: .5em;
+    border-bottom: 2px solid #eee;
+  }
+}
+
+.pager {
+  ul {
+    max-width: 750px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 30px auto;
+    gap: 20px;
+    li {
+      a, &.active {
+        display: block;
+        padding: .5em;
+        color: #ccc;
+        font-size: 1.1em;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all .4s ease;
+        line-height: 1;
+        font-size: 1.6rem;
+      }
+      a {
+        border: 1px solid #414141;
+        color: #414141;
+      }
+    }
+  }
+}
+
