@@ -14,8 +14,6 @@
   </footer>
 
 <script src="<?php bloginfo('template_directory');?>/js/slick.min.js"></script>
-<script src="<?php bloginfo('template_directory');?>/js/jquery.event.move.js"></script>
-<script src="<?php bloginfo('template_directory');?>/js/jquery.twentytwenty.js"></script>
 <script src="<?php bloginfo('template_directory');?>/js/scroll-hint.min.js"></script>
 <script>
   window.addEventListener('DOMContentLoaded', function () {

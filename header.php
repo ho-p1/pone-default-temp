@@ -24,16 +24,10 @@
 	}
 ?></title>
 
-<link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/reset.min.css">
 <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/style.min.css?<?php echo date("ymdHi",filemtime( get_template_directory()."/css/style.min.css")); ?>">
 <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/scroll-hint.css">
 <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/slick.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" as="style" fetchpriority="high">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" media="print" onload='this.media="all"'>
+<script rel="preconnect" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <?php if(!is_user_logged_in()): ?>
 <style>html,body{user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;}</style>
 <script type="text/javascript">
