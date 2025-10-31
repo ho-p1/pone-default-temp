@@ -81,21 +81,57 @@ function dashboard_text() {
   echo $html;
 }
 
-
-// オリジナルクイックタグを追加
+// 投稿本文内の <img> タグに decoding="async" と loading 属性を自動付与
+// - 1枚目の画像: loading="eager"
+// - 2枚目以降の画像: loading="lazy"
 //===================================================================
-add_action('admin_print_footer_scripts', function () {
-	if (wp_script_is('quicktags')){
-		echo <<<EOF
-<script type="text/javascript">
-	QTags.addButton('text-marker', 'マーカー', '<b class="marker">', '</b>', '', 'マーカーテキスト', 50000);
-	QTags.addButton('text-red', '赤文字', '<b class="red">', '</b>', '', '赤文字', 50001);
-	QTags.addButton('text-green', '緑文字', '<b class="green">', '</b>', '', '緑文字', 50002);
-	QTags.addButton('text-year', '年', '[year]', '', '現在の年を表示', 50003);
-	QTags.addButton('text-month', '年', '[month]', '', '現在の月を表示', 50003);
-	QTags.addButton('text-day', '年', '[day]', '', '現在の日を表示', 50003);
-	QTags.addButton('box', 'ボックス', '<div class="box" style="--box-bg:#fff; --box-border:#000;">', '</div>', 'シンプルなボックス', 50004);
-</script>
-EOF;
-	}
-},100);
+function add_image_attributes_to_content($content) {
+    $count = 0;
+
+    $content = preg_replace_callback(
+        '/<img[^>]*>/i',
+        function ($matches) use (&$count) {
+            $img = $matches[0];
+            $count++;
+
+            // decoding="async" がない場合に追加
+            if (!preg_match('/\bdecoding=/', $img)) {
+                $img = preg_replace('/<img/i', '<img decoding="async"', $img, 1);
+            }
+
+            // loading 属性を設定（1枚目=eager、それ以降=lazy）
+            if (!preg_match('/\bloading=/', $img)) {
+                $loading = ($count === 1) ? 'eager' : 'lazy';
+                $img = preg_replace('/<img/i', "<img loading=\"$loading\"", $img, 1);
+            }
+
+            return $img;
+        },
+        $content
+    );
+
+    return $content;
+}
+add_filter('the_content', 'add_image_attributes_to_content');
+
+
+
+// WordPressの出力する画像（アイキャッチ・ギャラリー等）にも適用
+//===================================================================
+function add_image_attributes_to_wp_images($attr) {
+    static $image_count = 0;
+    $image_count++;
+
+    if (empty($attr['decoding'])) {
+        $attr['decoding'] = 'async';
+    }
+
+    // 1枚目のみ eager、それ以降 lazy
+    if (empty($attr['loading'])) {
+        $attr['loading'] = ($image_count === 1) ? 'eager' : 'lazy';
+    }
+
+    return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'add_image_attributes_to_wp_images');
+

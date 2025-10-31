@@ -189,6 +189,12 @@ $breakpoints: (
   .w#{$i * 10} {
     width:#{$i * 10%};
   }
+  .mt#{$i * 10} {
+    margin-top:#{$i * 10px} !important;
+  }
+  .mb#{$i * 10} {
+    margin-bottom:#{$i * 10px} !important;
+  }
 }
 .m-auto {
   margin: auto;
