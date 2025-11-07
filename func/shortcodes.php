@@ -47,6 +47,19 @@ function sc_day(){
   return date('j') . "日";
 }
 add_shortcode('day','sc_day');
+
+// 指定日数前の日付取得
+//===================================================================
+function get_days_ago_shortcode($atts) {
+  $atts = shortcode_atts(array(
+      'days' => '0',
+      'format' => 'Y年n月j日'
+  ), $atts, 'days_ago');
+  $days = intval($atts['days']);
+  $date = date($atts['format'], strtotime("-{$days} days"));
+  return esc_html($date);
+}
+add_shortcode('days_ago', 'get_days_ago_shortcode');
   
 
 // パラメータからキーワードを取得
