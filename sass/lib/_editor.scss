@@ -1029,6 +1029,9 @@ dl.num {
         border-color: color-mix(in srgb, var(--btn, #FF3F33) 60%, white) transparent transparent;
         z-index: 1;
       }
+      &.reverse {
+        flex-direction: row-reverse;
+      }
     }
   }
   a, button {
