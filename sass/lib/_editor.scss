@@ -69,9 +69,12 @@ mark,
 .red { color: #f22226 !important; }
 .blue{ color: #3583cf !important; }
 .gold{ color: #ceaf79 !important; }
+.orange{ color: #FA812F !important; }
+.yellow{ color: #FEB21A !important; }
 .pink{ color: #ee34cd !important; }
 .navy{ color: #373f70 !important; }
 .green{ color: #339966 !important; }
+.gray{ color: #848484 !important; }
 
 .line{ color: #07CD07 !important; }
 
@@ -129,39 +132,45 @@ main {
     padding: .5em;
     background: var(--h2bg, #4ba2e6);
     border: 0;
-    border-bottom: .2em solid color-mix(in srgb, var(--h2bg, #4ba2e6) 80%, black);
-    border-radius: 0;
+    border-left: .4em solid color-mix(in srgb, var(--h2bg, #4ba2e6) 80%, black);
+    border-radius: 3px;
     color: var(--h2color, #fff);
+    font-size: 1.3em;
   }
   h3 {
     margin: 1em auto;
-    padding: .5em;
+    padding: .3em;
     background: var(--h3bg, #4ba2e6);
     border: 0;
-    border-left: .4em solid color-mix(in srgb, var(--h3bg, #4ba2e6) 80%, black);
+    border-left: .2em solid color-mix(in srgb, var(--h3bg, #4ba2e6) 80%, black);
+    border-radius: 3px;
     color: var(--h3color, #fff);
+    font-size: 1.2em;
   }
   h4 {
     margin: 1em auto;
-    padding: .5em;
+    padding: .3em .5em;
     border: 0;
-    background: var(--h4bg, #4ba2e6);
+    background: color-mix(in srgb, var(--h3bg, #4ba2e6) 30%, white);
     border-radius: 5px;
-    color: var(--h4color, #fff);
+    color: var(--h4color, #000);
+    font-size: 1.1em;
   }
   h5 {
     margin: 1em auto;
-    padding: .3em 0;
+    padding: .2em 0;
     border: 0;
-    border-bottom: 3px double var(--h5bg, #4ba2e6);
+    border-bottom: 3px solid var(--h5bg, #4ba2e6);
     color: var(--h5color, #000);
+    font-size: 1.1em;
   }
   h6 {
     margin: 1em auto;
-    padding: .3em .5em;
+    padding: .2em .5em;
     border: 0;
     border-left: .3em solid var(--h6bg, #4ba2e6);
     color: var(--h6color, #000);
+    font-size: 1em;
   }
   .ttl_bubble {
     padding: .5em 1em;
@@ -889,6 +898,36 @@ ol:not([class]) {
     }
   }
 }
+dl.num {
+  margin: 1em 0;
+  counter-reset: num;
+  dt {
+    margin-bottom: 0.2em;
+    padding-left: 1.5em;
+    font-weight: bold;
+    &::before {
+      width: 1.4em;
+      height: 1.4em;
+      text-align: center;
+      content: counter(num);
+      counter-increment: num;
+      color: #fff;
+      background: var(--num, #000);
+      border-radius: 50px;
+      line-height: 1.4em;
+      font-size: 90%;
+      top: 2px;
+      left: 0;
+      position: absolute;
+      font-weight: bold;
+    }
+  }
+  dd {
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+    font-size: 90%;
+  }
+}
 
 
 // Button
@@ -951,6 +990,45 @@ ol:not([class]) {
     }
     @include mq(lg) {
       font-size: 1.8rem;
+    }
+  }
+  &_mcbubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-icon {
+      width: 3em;
+      height: 3em;
+      margin-right: .5em;
+      flex-shrink: 0;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &-text {
+      padding: .5em 1em;
+      background: color-mix(in srgb, var(--btn, #FF3F33) 60%, white);
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 90%;
+      position: relative;
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-width: 8px 10px;
+        border-style: solid;
+      }
+      &::before {
+        top: 20px;
+        left: -10px;
+        border-color: color-mix(in srgb, var(--btn, #FF3F33) 60%, white) transparent transparent;
+        z-index: 1;
+      }
     }
   }
   a, button {
