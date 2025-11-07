@@ -846,6 +846,12 @@ ol.note {
   &.--gray {
     color: #999;
   }
+  &.center {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &.right {
     text-align: left;
     display: flex;
@@ -1029,8 +1035,13 @@ dl.num {
         border-color: color-mix(in srgb, var(--btn, #FF3F33) 60%, white) transparent transparent;
         z-index: 1;
       }
-      &.reverse {
-        flex-direction: row-reverse;
+    }
+    &.reverse {
+      flex-direction: row-reverse;
+      .btn_mcbubble-text::before {
+        right: -10px;
+        left: auto;
+        border-color: color-mix(in srgb, var(--btn, #FF3F33) 60%, white) transparent transparent color-mix(in srgb, var(--btn, #FF3F33) 60%, white);
       }
     }
   }
