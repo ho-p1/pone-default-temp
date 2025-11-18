@@ -177,6 +177,16 @@ $breakpoints: (
       -webkit-transform: translate(0, 0);
   }
 }
+@keyframes bound2 {
+  50% {
+    transform: translateY(0);
+    box-shadow: 0 3px 0 color-mix(in srgb, var(--btn, #FF3F33) 80%, black);
+  }
+  75% {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 color-mix(in srgb, var(--btn, #FF3F33) 80%, black);
+  }
+}
 @keyframes shiny {
   0% { transform: scale(0) rotate(45deg); opacity: 0; }
   80% { transform: scale(0) rotate(45deg); opacity: 0.5; }

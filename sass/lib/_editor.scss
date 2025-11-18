@@ -212,7 +212,7 @@ figure, .figure {
   }
 }
 
-.arrow {
+.arrow:not(ul):not(ol) {
   padding-left: 1.2em;
   position: relative;
   &::before,
@@ -274,7 +274,7 @@ table {
       }
     }
   }
-  .btn a {
+  [class^="btn"] a,[class*=" btn"] a {
     font-size: 1em;
     padding: .5em .2em;
   }
@@ -657,6 +657,7 @@ ul, ol {
     list-style-type: none;
     padding-left: 1.5rem;
     position: relative;
+    line-height: 1.2;
     @include mq(lg) {
       padding-left: 2rem;
     }
@@ -708,13 +709,13 @@ ul.check {
       height: 1.2em;
       background: var(--check, #000);
       border-radius: var(--round, 3px);
-      top: 3px;
+      top: 0;
       left: 0;
       @include mq(lg) {
         width: 1em;
         height: 1em;
         border-radius: var(--round, 3px);
-        top: 4px;
+        top: 0;
         left: 0;
       }
     }
@@ -754,7 +755,7 @@ ul.arrow {
         width: 1em;
         height: 1em;
         border-radius: 50px;
-        top: 4px;
+        top: 0;
         left: 0;
       }
     }
@@ -942,7 +943,7 @@ dl.num {
   animation: bound 1s infinite linear alternate;
 }
 .bound2 {
-  animation: bound 3s infinite linear alternate;
+  animation: bound2 .5s ease infinite alternate;
 }
 .shiny {
   position: relative;
@@ -998,65 +999,84 @@ dl.num {
       font-size: 1.8rem;
     }
   }
-  &_mcbubble {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &-icon {
-      width: 3em;
-      height: 3em;
-      margin-right: .5em;
-      flex-shrink: 0;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    &-text {
-      padding: .5em 1em;
-      background: color-mix(in srgb, var(--btn, #FF3F33) 60%, white);
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 90%;
-      position: relative;
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-width: 8px 10px;
-        border-style: solid;
-      }
-      &::before {
-        top: 20px;
-        left: -10px;
-        border-color: color-mix(in srgb, var(--btn, #FF3F33) 60%, white) transparent transparent;
-        z-index: 1;
-      }
-    }
-    &.reverse {
-      flex-direction: row-reverse;
-      .btn_mcbubble-text::before {
-        right: -10px;
-        left: auto;
-        border-color: color-mix(in srgb, var(--btn, #FF3F33) 60%, white) transparent transparent color-mix(in srgb, var(--btn, #FF3F33) 60%, white);
-      }
-    }
-  }
   a, button {
     display: block;
     width: 100%;
-    border-radius: var(--round, 100px);
+    border-radius: var(--round, 50px);
     padding: 1em;
     color: #fff;
     font-weight: bold;
+    line-height: 1.2;
     background: var(--btn, #FF3F33);
-    border: 2px solid color-mix(in srgb, var(--btn, #FF3F33) 80%, black);
-    // box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .3), inset -2px -2px 2px rgba(0, 0, 0, .1);
+    border: 1px solid color-mix(in srgb, var(--btn, #FF3F33) 80%, black);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .3), inset -2px -2px 2px rgba(0, 0, 0, .1);
     text-shadow: 0 2px 0 rgba(0, 0, 0, .2);
     font-size: var(--fz, 1.2em);
+    text-decoration: none;
+    @include effect();
+    &:hover {
+      opacity: .5;
+    }
+  }
+  &_bottom {
+    font-size: 90%;
+    color: #797979;
+    margin: .5em auto;
+    text-align: center;
+  }
+}
+
+.btn2 {
+  margin: 1em auto;
+  border: 0;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .4s ease;
+  position: relative;
+  text-align: center;
+  &_mc {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1rem;
+    padding: .5em;
+    color: color-mix(in srgb, var(--btn, #FF3F33) 80%, black 20%);
+    font-weight: bold;
+    font-size: 1em;
+    position: relative;
+    z-index: 2;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 1.2em;
+      background: color-mix(in srgb, var(--btn, #FF3F33) 80%, black 20%);
+    }
+    &::before {
+      transform: rotate(-20deg);
+    }
+    &::after {
+      transform: rotate(20deg);
+    }
+  }
+  a, button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: var(--min-h, 4em);
+    border-radius: var(--round, 5px);
+    padding: 1em;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.2;
+    background: var(--btn, #FF3F33);
+    border: 1px solid color-mix(in srgb, var(--btn, #FF3F33) 80%, black);
+    box-shadow: 0 5px 0 color-mix(in srgb, var(--btn, #FF3F33) 80%, black);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, .2);
     text-decoration: none;
     @include effect();
     &:hover {
