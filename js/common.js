@@ -51,7 +51,7 @@ $(function() {
   $(".copycode").on("click", function() {
     const copyText = $(this).val();
     navigator.clipboard.writeText(copyText).then(() => {
-      alert(`コード「${copyText}」がコピーされました`);
+      alert(`クーポンコード「${copyText}」がコピーされました`);
     });
   });
 

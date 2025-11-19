@@ -22,19 +22,19 @@
     </main>
 
     <?php $relate = get_field('relate'); if( $relate ): ?>
-    <section class="sec relate">
-      <h2 class="sec_title">～関連記事はこちら～</h2>
-      <ul>
-        <?php foreach( $relate as $post): ?>
-        <?php setup_postdata($post); ?>
-          <li><a href="<?php the_permalink(); ?>">
-            <span><?php the_post_thumbnail('full'); ?></span>
-            <strong><?php the_title(); ?></strong>
-          </a></li>
-        <?php endforeach; ?>
-      </ul>
-    </section>
-    <?php wp_reset_postdata(); ?>
+      <section class="sec relate">
+        <h2 class="sec_title">～関連記事はこちら～</h2>
+        <ul>
+          <?php foreach( $relate as $post): ?>
+          <?php setup_postdata($post); ?>
+            <li><a href="<?php the_permalink(); ?>">
+              <span><?php the_post_thumbnail('full'); ?></span>
+              <strong><?php the_title(); ?></strong>
+            </a></li>
+          <?php endforeach; ?>
+        </ul>
+      </section>
+      <?php wp_reset_postdata(); ?>
     <?php endif; ?>
 
   </div>

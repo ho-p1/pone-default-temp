@@ -51,7 +51,6 @@ if(isset($_GET['post_tag'])) {
   );
 }
 
-
 //tax_queryに格納
 if (count($tax_query) > 0) {
   $tax_query['relation'] = 'AND';

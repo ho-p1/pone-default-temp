@@ -15,3 +15,4 @@ foreach ($function_files as $file) {
     trigger_error("`$file`ファイルが見つかりません", E_USER_ERROR);
   }
 }
+

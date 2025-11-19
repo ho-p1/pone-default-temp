@@ -8,9 +8,7 @@
   </div>
 
   <main class="lp_inner">
-
     <?php the_content() ?>
-
   </main>
 
 <?php get_footer(); ?>

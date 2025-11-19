@@ -1,5 +1,5 @@
 <section id="searchform" class="sec searchform">
-<h2>あなたにピッタリの<br>エアコンクリーニング会社を探す</h2>
+<h2>あなたにピッタリな条件で探す</h2>
   <div class="searchform_inner">
     <form method="get" action="<?php bloginfo('url'); ?>">
       <input type="hidden" name="post_type" value="post">

@@ -56,6 +56,7 @@ document.body.onmousedown = "return false;"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<?php if ( !get_field('is-header') ) : ?>
 <header class="head">
 	<div class="head_inner">
 		<?php
@@ -70,6 +71,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<span class="head-pr">PR</span>
 	</div>
 </header>
+<?php endif; ?>
 
 <?php if ( is_page_template( 'page-lp.php' ) || is_search() ) : ?>
 	<div id="wrap" class="lp">

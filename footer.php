@@ -7,9 +7,6 @@
     <ul>
       <li><a href="<?php echo home_url('/company'); ?>">運営者情報</a></li>
       <li><a href="<?php echo home_url('/column'); ?>">コラム一覧</a></li>
-      <?php /*
-      <li><a href="">調査概要</a></li>
-      */ ?>
     </ul>
   </footer>
 
