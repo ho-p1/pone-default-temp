@@ -24,7 +24,7 @@
 	}
 ?></title>
 
-<link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/style.min.css?<?php echo date("ymdHi",filemtime( get_template_directory()."/css/style.min.css")); ?>">
+<link rel="stylesheet preconnect" href="https://cdn.jsdelivr.net/gh/ho-p1/pone-default-temp@main/css/style.min.css">
 <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/scroll-hint.css">
 <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/slick.css">
 <script rel="preconnect" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
