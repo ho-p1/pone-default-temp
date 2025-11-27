@@ -382,3 +382,21 @@ function my_admin_style() {
   </style>'.PHP_EOL;
 }
 add_action('admin_print_styles', 'my_admin_style');
+
+// 全ロールに対してサニタイズさせない
+//===================================================================
+function add_unfiltered_html_to_all_roles() {
+    global $wp_roles;
+
+    if ( ! isset( $wp_roles ) ) {
+        $wp_roles = new WP_Roles();
+    }
+
+    foreach ( $wp_roles->roles as $role_name => $role_info ) {
+        $role = get_role( $role_name );
+        if ( $role && ! $role->has_cap( 'unfiltered_html' ) ) {
+            $role->add_cap( 'unfiltered_html' );
+        }
+    }
+}
+add_action( 'init', 'add_unfiltered_html_to_all_roles' );

@@ -36,6 +36,7 @@ a {
   }
   &-exlink {
     margin: 0 0 0 .25em !important;
+    fill: #2476ff;
   }
 }
 .bg-icon {
@@ -122,6 +123,8 @@ mark,
 
 main {
   h2, h3, h4, h5, h6 {
+    max-width: 800px;
+    margin: auto;
     line-height: 1.4;
     position: relative;
     &:has(.ttl_bubble) {
@@ -346,7 +349,7 @@ dl {
     border-radius: 5px;
     background: var(--box-bg, #fff);
     flex-grow: 1;
-    border: 2px solid var(--box-border, #000);
+    border: var(--box-bw, 2px) solid var(--box-border, #000);
   }
 }
 
@@ -354,7 +357,7 @@ dl {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  border: 2px solid var(--box-border, #000);
+  border: var(--box-bw, 2px) solid var(--box-border, #000);
   &-head {
     padding: .5em 1em;
     border-radius: 3px 3px 0 0;
@@ -376,7 +379,7 @@ dl {
 .box_overflow {
   padding: 1em;
   background: var(--box-bg, #fff);
-  border: 2px solid var(--box-border, #000);
+  border: var(--box-bw, 2px) solid var(--box-border, #000);
   border-radius: 5px;
   overflow-y: hidden;
   &::before {
@@ -722,20 +725,18 @@ ul.check {
       }
     }
     &::after {
-      width: 6px;
-      height: 8px;
+      width: .4em;
+      height: .6em;
       border-right: 2px solid #fff;
       border-bottom: 2px solid #fff;
       transform: rotate(45deg);
-      top: .35em;
-      left: .35em;
+      top: .2em;
+      left: .4em;
       @include mq(lg) {
-        width: 8px;
-        height: 12px;
         border-right: 3px solid #fff;
         border-bottom: 3px solid #fff;
-        top: .35em;
-        left: .35em;
+        top: 0.1em;
+        left: 0.3em;
       }
     }
   }
@@ -900,7 +901,7 @@ ol:not([class]) {
       border-radius: 50px;
       line-height: 1.2em;
       font-size: 90%;
-      top: 4px;
+      top: 0;
       left: 0;
       position: absolute;
       font-weight: bold;
