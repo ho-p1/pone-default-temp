@@ -34,17 +34,32 @@ add_shortcode('icon', 'add_icon');
 // 年月日取得
 //===================================================================
 function sc_year(){
-  return date('Y') . "年";
+  $atts = shortcode_atts(array(
+      'intval' => '0',
+      'format' => 'Y年'
+  ), $atts, 'year');
+  $year = intval($atts['year']);
+  $year = date($atts['format'], strtotime("{$year} year"));
 }
 add_shortcode('year','sc_year');
 
 function sc_month(){
-  return date('n') . "月";
+  $atts = shortcode_atts(array(
+      'intval' => '0',
+      'format' => 'Y月'
+  ), $atts, 'month');
+  $month = intval($atts['month']);
+  $month = date($atts['format'], strtotime("{$month} month"));
 }
 add_shortcode('month','sc_month');
 
 function sc_day(){
-  return date('j') . "日";
+  $atts = shortcode_atts(array(
+      'intval' => '0',
+      'format' => 'Y日'
+  ), $atts, 'day');
+  $day = intval($atts['day']);
+  $day = date($atts['format'], strtotime("{$day} day"));
 }
 add_shortcode('day','sc_day');
 

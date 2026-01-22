@@ -7,7 +7,11 @@
     <h1><?php the_post_thumbnail('full'); ?></h1>
   </div>
 
-  <main class="lp_inner">
+  <?php if( !empty( get_field('styles') ) ): ?>
+  <main role="main" class="lp <?php echo '--' . get_field('styles'); ?> <?php if( get_field('classic-font') ){ echo '--classic'; } ?>">
+  <?php else: ?>
+  <main role="main" class="lp --base">
+  <?php endif; ?>
     <?php the_content() ?>
   </main>
 

@@ -16,8 +16,33 @@
   window.addEventListener('DOMContentLoaded', function () {
     new ScrollHint('.js-scrollable');
   });
-  $(function(){
-    $(".ba_wrap").twentytwenty();
+  $(function() {
+    $('.box_overflow').each(function() {
+      const $box = $(this);
+      const fullHeight = $box.outerHeight();
+      const initialHeight = $box.data('ini') || 100; // デフォルト100
+      $box.data('fullHeight', fullHeight);
+      $box.css({
+        'height': initialHeight + 'px',
+        'overflow': 'hidden',
+        'cursor': 'pointer'
+      });
+    });
+    $('.box_overflow').on('click', function() {
+      const $box = $(this);
+      const fullHeight = $box.data('fullHeight');
+      const initialHeight = $box.data('initial-height') || 100;
+
+      if ($box.hasClass('open')) {
+        $box.removeClass('open').animate({ height: initialHeight }, 300, function() {
+          $box.css('overflow', 'hidden');
+        });
+      } else {
+        $box.addClass('open').animate({ height: fullHeight }, 300, function() {
+          $box.css('overflow', 'visible');
+        });
+      }
+    });
   });
 </script>
 <script src="<?php bloginfo('template_directory');?>/js/common.js"></script>

@@ -115,6 +115,14 @@ function parent_check_script(){
 
 // ビジュアルエディターを無効化
 //===================================================================
+
+// 自動整形を無効
+add_filter('tiny_mce_before_init', 'my_tinymce_before_init');
+function my_tinymce_before_init($init_array) {
+    $init_array['invalid_elements'] = ''; // 削除対象タグをすべて解除
+    return $init_array;
+}
+
 function visual_editor_all_disable_script(){
   add_filter('user_can_richedit', 'disable_visual_editor_filter');
 }

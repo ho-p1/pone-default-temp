@@ -51,11 +51,6 @@ document.body.onmousedown = "return false;"
 <body>
 <?php endif; ?>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNSTQFT4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <?php if ( !get_field('is-header') ) : ?>
 <header class="head">
 	<div class="head_inner">
