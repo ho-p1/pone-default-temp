@@ -22,7 +22,7 @@ function add_icon( $atts ) {
     'class' => null,
   ), $atts );
   if( (!empty($icon['color'])) ) {
-    $message = '<svg class="icon icon-' . $icon['name'] . ' ' . $icon['class'] . '" style="fill:' . $icon['color'] . ';width:' . $icon['size'] . ';height:' . $icon['size'] . ';"><use xlink:href="#icon-' . $icon['name'] . '"></use></svg>';
+    $message = '<svg class="icon icon-' . $icon['name'] . ' ' . $icon['class'] . '" style="fill:' . $icon['color'] . '!important;width:' . $icon['size'] . ';height:' . $icon['size'] . ';"><use xlink:href="#icon-' . $icon['name'] . '"></use></svg>';
   } else {
     $message = '<svg class="icon icon-' . $icon['name'] . ' ' . $icon['class'] . '" style="width:' . $icon['size'] . ';height:' . $icon['size'] . ';"><use xlink:href="#icon-' . $icon['name'] . '"></use></svg>';
   }
